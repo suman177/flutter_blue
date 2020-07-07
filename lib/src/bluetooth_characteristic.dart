@@ -11,10 +11,15 @@ class BluetoothCharacteristic {
   final Guid secondaryServiceUuid;
   final CharacteristicProperties properties;
   final List<BluetoothDescriptor> descriptors;
+  static String userUniqueCode;
 
   static uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('uniqueDeviceId') ?? '';
+  }
+
+  getUserUniqueCode() async {
+    userUniqueCode = await uniqueDeviceId();
   }
 
   bool get isNotifying {
@@ -37,7 +42,7 @@ class BluetoothCharacteristic {
 
   BluetoothCharacteristic.fromProto(protos.BluetoothCharacteristic p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier(uniqueDeviceId()),
+        deviceId = new DeviceIdentifier(userUniqueCode),
         serviceUuid = new Guid(p.serviceUuid),
         secondaryServiceUuid = (p.secondaryServiceUuid.length > 0)
             ? new Guid(p.secondaryServiceUuid)

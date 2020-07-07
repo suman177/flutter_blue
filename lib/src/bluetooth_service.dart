@@ -10,15 +10,20 @@ class BluetoothService {
   final bool isPrimary;
   final List<BluetoothCharacteristic> characteristics;
   final List<BluetoothService> includedServices;
+  static String userUniqueCode;
 
   static uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('uniqueDeviceId') ?? '';
   }
 
+  getUserUniqueCode() async {
+    userUniqueCode = await uniqueDeviceId();
+  }
+
   BluetoothService.fromProto(protos.BluetoothService p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier(uniqueDeviceId()),
+        deviceId = new DeviceIdentifier(userUniqueCode),
         isPrimary = p.isPrimary,
         characteristics = p.characteristics
             .map((c) => new BluetoothCharacteristic.fromProto(c))

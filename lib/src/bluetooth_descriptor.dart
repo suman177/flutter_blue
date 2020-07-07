@@ -11,10 +11,15 @@ class BluetoothDescriptor {
   final DeviceIdentifier deviceId;
   final Guid serviceUuid;
   final Guid characteristicUuid;
+  static String userUniqueCode;
 
   static uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('uniqueDeviceId') ?? '';
+  }
+
+  getUserUniqueCode() async {
+    userUniqueCode = await uniqueDeviceId();
   }
 
   BehaviorSubject<List<int>> _value;
@@ -24,7 +29,7 @@ class BluetoothDescriptor {
 
   BluetoothDescriptor.fromProto(protos.BluetoothDescriptor p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier(uniqueDeviceId()),
+        deviceId = new DeviceIdentifier(userUniqueCode),
         serviceUuid = new Guid(p.serviceUuid),
         characteristicUuid = new Guid(p.characteristicUuid),
         _value = BehaviorSubject.seeded(p.value);
