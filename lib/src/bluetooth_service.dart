@@ -11,6 +11,11 @@ class BluetoothService {
   final List<BluetoothCharacteristic> characteristics;
   final List<BluetoothService> includedServices;
 
+  uniqueSharedPreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('uniqueDeviceId') ?? '';
+  }
+
   BluetoothService.fromProto(protos.BluetoothService p)
       : uuid = new Guid(p.uuid),
         deviceId = new DeviceIdentifier(p.remoteId),

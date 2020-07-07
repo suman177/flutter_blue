@@ -9,8 +9,13 @@ class BluetoothDevice {
   final String name;
   final BluetoothDeviceType type;
 
+  static uniqueDeviceId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('uniqueDeviceId') ?? '';
+  }
+
   BluetoothDevice.fromProto(protos.BluetoothDevice p)
-      : id = new DeviceIdentifier(p.remoteId),
+      : id = new DeviceIdentifier(uniqueDeviceId()),
         name = p.name,
         type = BluetoothDeviceType.values[p.type.value];
 
