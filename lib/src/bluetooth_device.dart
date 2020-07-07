@@ -12,12 +12,12 @@ class BluetoothDevice {
 
   static uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('uniqueDeviceId') ?? '';
+    userUniqueCode = prefs.getString('uniqueDeviceId') ?? '';
   }
 
-  getUserUniqueCode() async {
-    userUniqueCode = await uniqueDeviceId();
-  }
+  // getUserUniqueCode() async {
+  //   userUniqueCode = await uniqueDeviceId();
+  // }
 
   BluetoothDevice.fromProto(protos.BluetoothDevice p)
       : id = new DeviceIdentifier(userUniqueCode),

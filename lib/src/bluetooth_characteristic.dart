@@ -15,12 +15,12 @@ class BluetoothCharacteristic {
 
   static uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('uniqueDeviceId') ?? '';
+    userUniqueCode = prefs.getString('uniqueDeviceId') ?? '';
   }
 
-  getUserUniqueCode() async {
-    userUniqueCode = await uniqueDeviceId();
-  }
+  // getUserUniqueCode() async {
+  //   userUniqueCode = await uniqueDeviceId();
+  // }
 
   bool get isNotifying {
     try {

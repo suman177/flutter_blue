@@ -15,12 +15,12 @@ class BluetoothDescriptor {
 
   static uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('uniqueDeviceId') ?? '';
+    userUniqueCode = prefs.getString('uniqueDeviceId') ?? '';
   }
 
-  getUserUniqueCode() async {
-    userUniqueCode = await uniqueDeviceId();
-  }
+  // getUserUniqueCode() async {
+  //   userUniqueCode = await uniqueDeviceId();
+  // }
 
   BehaviorSubject<List<int>> _value;
   Stream<List<int>> get value => _value.stream;
