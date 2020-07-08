@@ -11,7 +11,7 @@ class BluetoothDescriptor {
   final DeviceIdentifier deviceId;
   final Guid serviceUuid;
   final Guid characteristicUuid;
-  static String userUniqueCode = "Here Is Id";
+  static String userUniqueCode = "UniqueID";
 
   uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
