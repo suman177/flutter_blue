@@ -13,7 +13,7 @@ class BluetoothDescriptor {
   final Guid characteristicUuid;
   static String userUniqueCode;
 
-  static uniqueDeviceId() async {
+  uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     userUniqueCode = prefs.getString('uniqueDeviceId') ?? '';
   }
@@ -29,7 +29,7 @@ class BluetoothDescriptor {
 
   BluetoothDescriptor.fromProto(protos.BluetoothDescriptor p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier(userUniqueCode),
+        deviceId = new DeviceIdentifier(userUniqueCode.toString()),
         serviceUuid = new Guid(p.serviceUuid),
         characteristicUuid = new Guid(p.characteristicUuid),
         _value = BehaviorSubject.seeded(p.value);
@@ -41,7 +41,6 @@ class BluetoothDescriptor {
       ..descriptorUuid = uuid.toString()
       ..characteristicUuid = characteristicUuid.toString()
       ..serviceUuid = serviceUuid.toString();
-
     await FlutterBlue.instance._channel
         .invokeMethod('readDescriptor', request.writeToBuffer());
 
