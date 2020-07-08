@@ -15,7 +15,7 @@ class BluetoothDescriptor {
 
   uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    userUniqueCode = prefs.getString('uniqueDeviceId') ?? '';
+    userUniqueCode = prefs.getString('uniqueDeviceId') ?? 'Not Found';
   }
 
   // getUserUniqueCode() async {
