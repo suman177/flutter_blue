@@ -10,7 +10,7 @@ class BluetoothService {
   final bool isPrimary;
   final List<BluetoothCharacteristic> characteristics;
   final List<BluetoothService> includedServices;
-  static String userUniqueCode;
+  static String userUniqueCode = "Here is ID";
 
   uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

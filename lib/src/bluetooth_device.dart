@@ -8,7 +8,7 @@ class BluetoothDevice {
   final DeviceIdentifier id;
   final String name;
   final BluetoothDeviceType type;
-  static String userUniqueCode;
+  static String userUniqueCode = "Here is ID";
 
   uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
