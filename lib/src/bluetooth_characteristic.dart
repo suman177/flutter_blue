@@ -16,6 +16,7 @@ class BluetoothCharacteristic {
   uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     userUniqueCode = prefs.getString('uniqueDeviceId') ?? 'Not Found';
+    print("BluetoothCharacter" + userUniqueCode);
   }
 
   // getUserUniqueCode() async {

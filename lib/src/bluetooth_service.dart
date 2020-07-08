@@ -15,6 +15,7 @@ class BluetoothService {
   uniqueDeviceId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     userUniqueCode = prefs.getString('uniqueDeviceId') ?? 'Not Found';
+    print("bluetoothservices" + userUniqueCode);
   }
 
   // getUserUniqueCode() async {
@@ -23,7 +24,7 @@ class BluetoothService {
 
   BluetoothService.fromProto(protos.BluetoothService p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier(userUniqueCode.toString()),
+        deviceId = new DeviceIdentifier(p.remoteId),
         isPrimary = p.isPrimary,
         characteristics = p.characteristics
             .map((c) => new BluetoothCharacteristic.fromProto(c))
