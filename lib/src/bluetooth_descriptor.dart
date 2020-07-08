@@ -62,10 +62,11 @@ class BluetoothDescriptor {
     });
   }
 
+  //deviceId.toString()
   /// Writes the value of a descriptor
   Future<Null> write(List<int> value) async {
     var request = protos.WriteDescriptorRequest.create()
-      ..remoteId = deviceId.toString()
+      ..remoteId = "generatedId"
       ..descriptorUuid = uuid.toString()
       ..characteristicUuid = characteristicUuid.toString()
       ..serviceUuid = serviceUuid.toString()

@@ -6,6 +6,7 @@
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
 import 'dart:core' as $core;
+import 'dart:core';
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
@@ -136,12 +137,20 @@ class AdvertisementData extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AdvertisementData>(create);
   static AdvertisementData _defaultInstance;
 
+  String localNameValue() {
+    return "hello123";
+  }
+
   @$pb.TagNumber(1)
   $core.String get localName => $_getSZ(0);
   @$pb.TagNumber(1)
   set localName($core.String v) {
     $_setString(0, v);
   }
+  // set localName($core.String v) {
+  //   // $_setString(0, v);
+  //   localNameValue();
+  // }
 
   @$pb.TagNumber(1)
   $core.bool hasLocalName() => $_has(0);
