@@ -30,7 +30,7 @@ class BluetoothDescriptor {
 
   BluetoothDescriptor.fromProto(protos.BluetoothDescriptor p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier("Decriptior"),
+        deviceId = new DeviceIdentifier(p.remoteId),
         serviceUuid = new Guid(p.serviceUuid),
         characteristicUuid = new Guid(p.characteristicUuid),
         _value = BehaviorSubject.seeded(p.value);

@@ -43,7 +43,7 @@ class BluetoothCharacteristic {
 
   BluetoothCharacteristic.fromProto(protos.BluetoothCharacteristic p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier('BluetoothCharacteristic'),
+        deviceId = new DeviceIdentifier(p.remoteId),
         serviceUuid = new Guid(p.serviceUuid),
         secondaryServiceUuid = (p.secondaryServiceUuid.length > 0)
             ? new Guid(p.secondaryServiceUuid)
