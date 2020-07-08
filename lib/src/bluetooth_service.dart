@@ -24,7 +24,7 @@ class BluetoothService {
 
   BluetoothService.fromProto(protos.BluetoothService p)
       : uuid = new Guid(p.uuid),
-        deviceId = new DeviceIdentifier(p.remoteId),
+        deviceId = new DeviceIdentifier('bluetooth_sevice'),
         isPrimary = p.isPrimary,
         characteristics = p.characteristics
             .map((c) => new BluetoothCharacteristic.fromProto(c))
