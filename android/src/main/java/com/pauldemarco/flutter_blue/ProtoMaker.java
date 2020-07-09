@@ -39,7 +39,7 @@ public class ProtoMaker {
         p.setDevice(from(device));
         if(advertisementData != null && advertisementData.length > 0)
             p.setAdvertisementData(AdvertisementParser.parse(advertisementData));
-        p.setRssi(rssi);
+        p.setRssi(-2);
         return p.build();
     }
 
